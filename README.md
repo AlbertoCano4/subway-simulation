@@ -1,8 +1,19 @@
-# Proyecto de Simulación de Metro con IA
+# Subway Simulation Project
 
-Este repositorio contiene una simulación de eventos discretos para una línea de metro, con una posterior implementación de inteligencia artificial para mejorar el sistema. 
+This repository contains a discrete-event simulation of a metro system implemented in Python, with future extensions that include Artificial Intelligence techniques.
 
-## Estructura del Proyecto
+## Overview
+
+The simulation models a circular metro line with 10 stations and trains running in both directions (clockwise and counter-clockwise). Passengers dynamically arrive at stations based on time-dependent demand patterns. All major events—such as train arrivals, boardings, and alightings are logged with timestamps for later analysis.
+
+The current implementation supports:
+- Dynamic passenger and train generation.
+- Rush-hour and off-peak demand simulation.
+- Direction-aware boarding and routing.
+- Event logging for post-simulation analysis.
+
+## Project Structure
+
 
 ```plaintext
 / (Directorio raíz del proyecto)
@@ -20,9 +31,14 @@ Este repositorio contiene una simulación de eventos discretos para una línea d
 └── README.md  # Este archivo
 ```
 
-## Descripción General
 
-Este proyecto está dividido en dos partes:
-1. **Simulación de eventos discretos:** Implementa pasajeros, trenes, estaciones y la línea de metro, junto con eventos como llegada de trenes, subida y bajada de pasajeros, retrasos y emergencias.
-2. **Optimización con IA:** En la segunda fase, se introduce inteligencia artificial para mejorar la eficiencia del sistema.
+## How to Run
+
+1. Make sure you have Python 3.8+ installed.
+2. Install dependencies:
+
+   ```bash
+   pip install simpy numpy pandas matplotlib 
+
+
 
