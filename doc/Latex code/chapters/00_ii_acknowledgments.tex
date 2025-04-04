@@ -1,0 +1,38 @@
+
+
+\chapter*{\center \Large Jupyter Notebook }
+The analisis. ipynb notebook is designed to examine the data generated during the simulation of the metro system, specifically those recorded in the eventlog.csv file. This file contains detailed information about every event occurring in the system, such as passenger arrivals at stations, train departures and arrivals, and boarding or alighting events. The analysis is performed using well-known Python data science libraries such as Pandas, Matplotlib, and Seaborn.
+~\\[0,5cm]
+\noindent\textbf{1. Boardings and Alightings by Station}
+The analysis of boardings and alightings across stations reveals significant asymmetries in usage. Some stations act as strong departure hubs, likely located in residential or peripheral areas, while others dominate as arrival points, possibly situated near commercial, educational, or central zones. This directional flow highlights the existence of structural movement patterns in the simulated city model. Understanding these imbalances is essential for making targeted improvements in service frequency and infrastructure allocation.
+~\\[0,5cm]
+Moreover, these trends can inform planners about latent demand or underutilized parts of the network. Stations with few interactions might indicate areas with poor connectivity, insufficient accessibility, or low urban density, all of which could benefit from complementary policies. Enhancing last-mile connections, improving pedestrian access, or reinforcing intermodality with buses and bikes could help balance flows. As a simulation that mimics real urban inequality (like the poor connectivity in northern Madrid), this insight aligns with the broader social goal of reducing territorial disparities.
+~\\[0,5cm]
+\noindent\textbf{ 2. Passengers per Train   }
+The distribution of boardings per train shows that certain units are heavily used while others remain underutilized. This suggests that some trains operate during high-demand windows or along particularly busy segments of the route. Conversely, trains with low boarding counts may correspond to off-peak hours, or operate in directions with less traffic flow. Identifying these load differences is crucial for adapting train deployment to actual usage patterns.
+~\\[0,5cm]
+From an operational standpoint, this imbalance could be addressed through dynamic train scheduling powered by predictive models. For instance, integrating AI to forecast demand could enable real-time activation or deactivation of trains based on expected ridership. Reducing idle capacity while maintaining service during critical times would improve energy efficiency and passenger experience. As your system already simulates dynamic train generation, this opens the door to future enhancements using reinforcement learning or fuzzy logic for even smarter scheduling.
+~\\[1cm]
+\noindent\textbf{3. Boardings per Hour }
+The hourly boarding analysis confirms the presence of clearly defined rush hours, typically around 7–9 AM and 5–7 PM. These peaks align with expected commuter behaviors such as travel to and from work or school. The graph also highlights off-peak periods with minimal demand, where fewer trains may be necessary to maintain an efficient system. This temporal distribution validates the adaptive scheduling logic already implemented in your simulation.
+~\\[0,5cm]
+In a real-world context, this kind of temporal demand modeling is critical for resource optimization. Urban transport authorities could use such data to fine-tune service frequency and reduce operational costs during low-use hours. Moreover, these trends could be influenced by broader societal rhythms, like teleworking or school calendars, which an AI-enhanced system could learn to anticipate. Incorporating real historical data in future versions would allow your simulation to make even more accurate predictions and policy recommendations.
+~\\[0,5cm]
+\noindent\textbf{4. Top 10 Routes  }
+The identification of the most frequently traveled routes offers deep insights into user preferences and network bottlenecks. These top 10 connections often represent direct links between major origin and destination pairs, acting as the backbone of the simulated metro line. A high concentration of passengers along these paths suggests their strategic importance, warranting special attention for upgrades or express service deployment. Monitoring their evolution over time can also reveal shifting patterns in urban mobility.
+~\\[0,5cm]
+From a planning perspective, prioritizing these routes could yield significant returns in user satisfaction and system performance. Increasing frequency, train capacity, or even offering dedicated lines during rush hours would help alleviate pressure and reduce travel times. Furthermore, these data points could serve as a validation metric when proposing new network extensions. In your case, given the project's intention to address connectivity gaps in northern Madrid, understanding which synthetic routes are most in demand can help shape realistic and equitable expansion strategies.
+~\\[0,5cm]
+\begin{itemize}
+    \item Average Waiting Time per Station
+This chart shows the average time passengers spend waiting at each station before boarding a train. It helps identify underserved stations and time slots with inefficient service.
+\end{itemize}
+\begin{itemize}
+    \item Train Occupancy Over Time
+This visualization tracks how full each train is throughout the day. It reveals usage patterns and highlights moments of overcrowding or underutilization.
+\end{itemize}
+
+\begin{itemize}
+    \item Directional Flow Comparison
+This chart compares passenger flow in clockwise vs. counterclockwise directions. It helps detect imbalances in network usage and supports direction-specific service adjustments.
+\end{itemize}
