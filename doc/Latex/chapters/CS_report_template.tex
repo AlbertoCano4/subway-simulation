@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt,oneside]{book} 
+\usepackage{CS_report} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+    \captionsetup[figure]{margin=1.5cm,font=small,name={Figure},labelsep=colon}
+    \captionsetup[table]{margin=1.5cm,font=small,name={Table},labelsep=colon}  
+    \frontmatter   
+    
+    
+    \begin{titlepage}      
+        \begin{center}
+        
+            {\LARGE CUNEF Universidad\\[0.5cm]
+           Inteligencia Artificial}\\[2cm]
+        \begin{figure}
+			    \centering
+			    \includegraphics[width=0.5\linewidth]{cunef.jpg}   
+			\end{figure}
+				
+			
+		
+            \linespread{1.3}\huge {
+                             
+                PRÁCTICA IA - METRO
+                
+                https://github.com/AlbertoCano4/subway-simulation
+                
+            
+            }
+            \linespread{1}~\\[2cm]
+			
+            {\Large 
+                
+                Alberto Cano, 
+                Ignacio Fernández y 
+                Gonzalo Ruiz
+                             
+            }
+            
+
+            {\linespread{1.3}
+        4/04/2025
+            \vfill
+            
+            }
+        \end{center}
+    \end{titlepage}
+
+    \newpage
+    \thispagestyle{empty}
+    \chapter*{\centering \Large ¿Simulation or solution?}
+    % -------------------------------------------------------------------
+
+
+The northern region of Madrid has historically faced significant challenges regarding its integration into the city's metropolitan transport network. This lack of connectivity has not only impeded the daily mobility of residents but has also contributed to pronounced territorial inequalities, limiting access to economic opportunities, education, and essential services.
+~\\[0,5cm]
+Although initially conceived as a simulation, this project goes a step further. It emerges as a response to a real-world need: the poor connectivity of northern Madrid with the rest of the metropolitan transport network. This lack of infrastructure and accessibility in certain areas not only hinders the mobility of citizens but also deepens territorial inequalities within the city.
+~\\[0,5cm]
+Addressing the connectivity deficits in northern Madrid is imperative for fostering balanced urban development and social equity. By integrating advanced simulation techniques and artificial intelligence into transport planning, there exists a significant opportunity to design optimized network extensions. Such approaches can enhance route efficiency and improve the overall quality of life for residents, contributing to a more cohesive and accessible urban environment.
+~\\[0,5cm]
+Therefore, this work does not merely replicate the functioning of the Madrid Metro; it proposes a possible solution: an extension of the network that optimizes routes, improves efficiency, and considers the impact on users' quality of life. Through Artificial Intelligence techniques and simulation, the goal is not only to model the current system, but also to open a space for reflection and the design of more equitable and sustainable alternatives.
+\begin{figure}
+        \centering
+        \vspace{-20 cm} 
+        \includegraphics[width=0.49
+        \linewidth]{image.png}
+    \end{figure}
+
+
+
+
+
+    % -------------------------------------------------------------------
+    \newpage
+    \thispagestyle{empty}
+    \chapter*{\centering \Large Proyect Summary}
+
+
+     We have developed a complete simulation of a metro system using discrete events in Python with the SimPy and NumPy libraries. The system models 10 stations connected by a circular line, with trains running in both directions (clockwise and counterclockwise). Passengers dynamically arrive at stations based on an arrival rate that varies with time of day, reflecting peak demand during rush hours. Trains are also generated according to the schedule, with more units active during high-demand periods, and are automatically withdrawn when no longer needed. Each relevant event, such as passenger arrivals, boardings, alightings, train arrivals, or train withdrawals, is recorded in an event-log.csv file along with its real-time timestamp (HH:MM). Additionally, the simulation uses a random seed to ensure reproducible results, allowing for consistent comparative analysis in a Jupyter notebook that extracts key operational metrics. 
+    ~\\[0,5cm]
+     Beyond the core functionality, the simulation incorporates additional features that bring it closer to real-world complexity. For instance, passenger arrival rates differ by station and fluctuate throughout the day, creating a more realistic representation of urban mobility patterns. Trains are programmed to follow specific directions and avoid collisions at stations, adding a layer of operational logic to the model. Furthermore, the system dynamically adapts to changing conditions: more trains are introduced during peak hours, and nonactive ones are retired to optimize energy and space usage. This dynamic behavior supports a better understanding of how transport systems can respond to varying demand throughout the day. 
+     ~\\[0,5cm]
+     We have also laid the foundation for future enhancements, including the integration of variable distances between stations, which would influence travel times and scheduling. This is crucial because in real metro systems, the stations are not equidistant, and the variation in travel time affects passenger flow and overall network efficiency. The code is structured to support scalability, allowing the addition of more complex scenarios such as line expansions, incident simulations, or advanced pathfinding algorithms. In general, this simulation serves as both a technical exploration and a decision support tool to design more adaptive and user-centered public transportation systems.\\
+     
+
+
+    \begin{figure}
+        \centering
+        \vspace{-10 cm} 
+        \includegraphics[width=0.5\linewidth]{metro.png}
+    \end{figure}
+
+     
+    
+    \input{chapters/00_i_abstract}
+
+   
+    \input{chapters/00_ii_acknowledgments}   
+
+    
+
+  
+    \begin{appendices}
+        \input{chapters/appendix_A.tex}
+        
+    \end{appendices}
+    
+\end{document}
