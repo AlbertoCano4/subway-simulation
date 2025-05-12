@@ -1,25 +1,28 @@
 # Subway Simulation Project
 
-This repository contains a discrete-event simulation of a metro system implemented in Python, with future extensions that include Artificial Intelligence techniques.
+This repository implements a discrete-event simulation of a circular metro line in Python, now enhanced with AI-driven optimization and built‐in CSV logging for easy post–run analysis.
 
 ## Overview
 
-The simulation models a circular metro line with 10 stations and trains running in both directions (clockwise and counter-clockwise). Passengers dynamically arrive at stations based on time-dependent demand patterns. All major events—such as train arrivals, boardings, and alightings are logged with timestamps for later analysis.
+The simulation models a circular metro line with 10 stations and trains running in both directions (clockwise and counter‐clockwise). Passengers arrive at stations according to configurable demand rates. Every key event—train arrivals, passenger boardings and alightings—is logged with a timestamp in a single `event_log.csv` file for downstream analysis.
 
-The current implementation supports:
-- Dynamic passenger and train generation.
-- Rush-hour and off-peak demand simulation.
-- Direction-aware boarding and routing.
-- Event logging for post-simulation analysis.
+In addition to the core simpy‐based engine, we’ve integrated a **Particle Swarm Optimization (PSO)** module that automatically tunes:
+
+- **Train frequency (headway)**: the interval between consecutive train departures.  
+- **Fleet size**: the total number of trains operating over the day.
+
+The PSO optimizer minimizes the **average passenger waiting time** by repeatedly running the simulation under different headway + fleet configurations.
 
 ## Project Structure
-
 
 ```plaintext
 / (Directorio raíz del proyecto)
 │
 ├── src/
-│   ├── (Módulos y carpetas del código del proyecto)
+│   ├── main.py # Entry point: sets seeds, runs PSO and sim
+│   ├── sim/ # simulation_manager.py
+│   ├── optim/ # PSO implementation 
+│   ├── modules/ # Lifted simulation components reused by PSO
 │
 ├── data_analysis/
 │   ├── analisis.ipynb  # Notebook de análisis de datos
@@ -31,14 +34,29 @@ The current implementation supports:
 └── README.md  # Este archivo
 ```
 
+## New Features
 
-## How to Run
+1. **CSV Event Logging**  
+   - Generates `event_log.csv` in `data_analysis/`, containing columns:
+     ```text
+     Time,Event,Entity,Station,Train,Direction,Destination
+     ```
+   - Captures every passenger arrival, boarding, alighting, and train arrival.
 
-1. Make sure you have Python 3.8+ installed.
-2. Install dependencies:
+2. **PSO‐Based Optimization**  
+   - Automatically searches for the headway (in minutes) and number of trains that minimize average passenger wait.  
+   - Reports the **optimized frequency**, **fleet size**, and **resulting average wait time** in the console.
 
+3. **Built‐In Data Analysis Notebook**  
+   - `data_analysis/analysis.ipynb` includes:
+     - Distribution of passenger wait times  
+     - Average headways per station  
+     - Circular histogram of events by hour  
+     - Additional custom plots you can extend  
+
+## Installation & Usage
+
+1. **Clone the repo** and enter the root folder:
    ```bash
-   pip install simpy numpy pandas matplotlib 
-
-
-
+   git clone <repo-url>
+   cd <project-root>
