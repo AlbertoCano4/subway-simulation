@@ -1,6 +1,5 @@
 \documentclass[a4paper,11pt,oneside]{book}
-\usepackage{CS_report}
-\usepackage{hyperref}
+\usepackage{../CS_report}\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{caption}
 
@@ -16,7 +15,7 @@
         {\large Double Degree in Business Administration and Computer Science}\\
         {\large Subject: Artificial Intelligence}\\[2cm]
 
-        \includegraphics[width=0.35\linewidth]{cunef.jpg}\\[2.5cm]
+        \includegraphics[width=0.35\linewidth]{Latex code/chapters/cunef.jpg}\\[2.5cm]
 
         {\Huge \textbf{Metro Simulation Project}}\\[0.4cm]
         {\Large Based on Discrete-Event Modeling}\\[1.2cm]
@@ -52,6 +51,7 @@ Therefore, this work does not merely replicate the functioning of the Madrid Met
         \vspace{-20 cm} 
         \includegraphics[width=0.49
         \linewidth]{image.png}
+        
     \end{figure}
 
 
@@ -69,27 +69,38 @@ Therefore, this work does not merely replicate the functioning of the Madrid Met
      Beyond the core functionality, the simulation incorporates additional features that bring it closer to real-world complexity. For instance, passenger arrival rates differ by station and fluctuate throughout the day, creating a more realistic representation of urban mobility patterns. Trains are programmed to follow specific directions and avoid collisions at stations, adding a layer of operational logic to the model. Furthermore, the system dynamically adapts to changing conditions: more trains are introduced during peak hours, and nonactive ones are retired to optimize energy and space usage. This dynamic behavior supports a better understanding of how transport systems can respond to varying demand throughout the day. 
      ~\\[0,5cm]
      We have also laid the foundation for future enhancements, including the integration of variable distances between stations, which would influence travel times and scheduling. This is crucial because in real metro systems, the stations are not equidistant, and the variation in travel time affects passenger flow and overall network efficiency. The code is structured to support scalability, allowing the addition of more complex scenarios such as line expansions, incident simulations, or advanced pathfinding algorithms. In general, this simulation serves as both a technical exploration and a decision support tool to design more adaptive and user-centered public transportation systems.\\
-     
+
 
 
     \begin{figure}
         \centering
         \vspace{-10 cm} 
-        \includegraphics[width=0.5\linewidth]{metro.png}
+        \includegraphics[width=0.5\linewidth]{Latex code/chapters/metro.png}
     \end{figure}
 
-     
-    
-    \input{chapters/00_i_abstract}
+    \newpage
+\thispagestyle{empty}
+\chapter*{\centering \Large Second Submission}
 
-   
-    \input{chapters/00_ii_acknowledgments}   
+{\centering\large \textbf{AI Implementation}}
+ \vspace{0.5 cm} 
 
-    
+In our work, we cast the design of train timetables as an optimization problem, so that the PSO algorithm automatically adjusts two key parameters: the headway between trains (a continuous variable) and the total number of active trains throughout the service day, which we had to round to an integer value since we could not enforce integrality with the material covered in the course. To this end, we defined the average passenger waiting time as the objective function, calculated from the station-arrival and boarding events recorded in the simulation. Each swarm particle is assigned a specific proposal for headway and train count; in each iteration we evaluate that pair by running the full simulation and measuring the resulting average delay.
 
-  
+After a preset number of iterations (or once improvements become negligible), PSO returns the optimal configuration. Thanks to this approach, we avoid manually designing complex rules to adapt frequency to demand or exhaustively testing every possible combination. The method proves highly flexible: if we wished to include additional variables (such as train capacity or station-specific demand patterns), we would simply add them to the decision vector. Moreover, relying on multiple simulation runs and a stochastic process, PSO offers robustness against variability in the model, producing a timetable that performs well on average and significantly reduces user waiting times.
+
+\vspace{1 cm} 
+{\centering\large \textbf{Jupyter}}
+ \vspace{0.5 cm} 
+ 
+In the analysis document, we explored the distribution of passenger waiting times and observed that most passengers wait less than five minutes before boarding, although longer queues appear during peak hours. The circular histogram of events by hour revealed clear peaks in the morning and afternoon, confirming that demand is not uniform. This finding warns us that—even though we employ a single headway value—its optimal setting must be capable of cushioning both the periods of highest influx and those of lower usage.
+
+Next, the plot of average headway per station showed slight differences depending on network location: central stations receive trains every 10–11 minutes on average, while terminal stations see headways of around 12–13 minutes. These variations reflect how the PSO configuration distributes resources in a balanced manner, subtly adjusting frequency according to the specific load at each point along the route.
+
+Finally, when comparing these visualizations with the results of the optimized simulation (a departure frequency of 10.25 minutes, 4 trains in service, and an actual average waiting time of 3.62 minutes), we found an excellent match. The PSO algorithm has identified an efficient trade-off between the number of trains and headway that minimizes average waiting time and responds robustly to the temporal demand patterns.
+ 
+
     \begin{appendices}
-        \input{chapters/appendix_A.tex}
         
     \end{appendices}
     
